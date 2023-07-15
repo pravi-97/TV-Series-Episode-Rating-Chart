@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-
+import myImg from './images/No-Image-Placeholder.png';
 const FindSeries = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -10,29 +10,22 @@ const FindSeries = () => {
     const [sArr, setSArr] = useState([]);
     const [isPending, setIsPending] = useState(true);
 
-    useEffect(() => {
-        let url = "https://imdb-api.projects.thetuhin.com/";
-        console.log(url + "search?query=" + value);
 
-        fetch(url + "search?query=" + value)
+    useEffect(() => {
+        const lambda = 'https://7t7dzo20f2.execute-api.us-east-1.amazonaws.com/test/?param1=search&param2='
+
+        fetch(lambda + value)
             .then(response => response.json())
             .then(data => {
-                console.log('Data Returned ' + data.message);
-                const tvSeriesResults = data.results.filter(element => element.type === "tvSeries");
+                setSArr(data);
+                setIsPending(false);
 
-                Promise.all(tvSeriesResults.map(element => (
-                    fetch(url + "title/" + element.id)
-                        .then(response => response.json())
-                )))
-                    .then(tvSeriesData => {
-                        setSArr(tvSeriesData);
-                        setIsPending(false);
-                    })
-                    .catch(error => {
-                        console.log(error);
-                        setIsPending(false);
-                    });
+            })
+            .catch(error => {
+                console.log(error);
+                setIsPending(false);
             });
+
     }, [value]);
 
     return (
@@ -42,16 +35,19 @@ const FindSeries = () => {
                     {isPending ? (
                         <p>Loading...</p>
                     ) : (
-                        sArr.map((data) => (
-                            <Link to={"/chart?value=" + data.id} key={data.id}>
-                                <div className="mb-5 col-md-6 col-sm-12 col-lg-4 center-content">
-                                    <div className="card card-main">
-                                        <img src={data.image} className="card-img-top rounded" alt="..." />
-                                        <h5 className="card-title">{data.title}</h5>
-                                        <p className="card-text">{data.plot}</p>
+                        sArr.map((element) => (
+                            <div className="col-md-4 col-sm-12" key={element.id}>
+                                <Link to={"/chart?value=" + element.id}>
+                                    <div className="mb-5 center-content">
+                                        <div className="card card-main">
+                                            {element.poster_path === null ? (<img src={myImg} className="card-img-top rounded" alt={`${element.original_name} Poster Unavailable`} />) :
+                                            (<img src={`https://image.tmdb.org/t/p/original${element.poster_path}`} className="card-img-top rounded" alt={`${element.original_name} Poster`} />)}
+                                            <h5 className="card-title">{element.original_name}</h5>
+                                            <p className="card-text">{element.overview}</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </Link>
+                                </Link>
+                            </div>
                         ))
                     )}
                 </div>
