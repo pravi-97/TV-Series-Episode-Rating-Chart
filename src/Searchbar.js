@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import {Link} from 'react-router-dom'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 const SearchBar = () => {
-    let [title, setTitle] = useState('Hello');
+    let [title, setTitle] = useState('');
     const history = useHistory();
     
     const handleSubmit = (e) => {
@@ -11,10 +10,8 @@ const SearchBar = () => {
         const regex = /^tt\d+$/;
         title = (title.trim()).toString();
         if (regex.test(title)) {
-           console.log("Title: " +title);
             history.push(`/chart?value=${encodeURIComponent(title)}`)
         } else {
-            console.log("Query: " + title);
             history.push(`/find?value=${encodeURIComponent(title)}`)
         }
     }
