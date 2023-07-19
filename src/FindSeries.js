@@ -41,7 +41,7 @@ const FindSeries = () => {
                                     <div className="mb-5 center-content">
                                         <div className="card card-main">
                                             {element.poster_path === null ? (<img src={myImg} className="card-img-top rounded" alt={`${element.original_name} Poster Unavailable`} />) :
-                                            (<img src={`https://image.tmdb.org/t/p/original${element.poster_path}`} className="card-img-top rounded" alt={`${element.original_name} Poster`} />)}
+                                                (<img src={`https://image.tmdb.org/t/p/original${element.poster_path}`} className="card-img-top rounded" alt={`${element.original_name} Poster`} />)}
                                             <h5 className="card-title">{element.original_name}</h5>
                                             <p className="card-text">{element.overview}</p>
                                         </div>

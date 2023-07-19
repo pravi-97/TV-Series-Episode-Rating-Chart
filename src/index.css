@@ -12,9 +12,7 @@ html {
 body {
     background-color: lavender;
 }
-#chartjs-tooltip{
-    display: none;
-}
+
 .card-main {
     width: 320px;
     height: 400px;
@@ -170,9 +168,10 @@ body {
     --fa-bounce-height: -10px;
 }
 
-canvas{
+canvas {
     padding: 0px 50px 0px 50px;
 }
+
 /* #go-to-top:hover #top-arrow {
     transform: translateY(-5px);
 } */
