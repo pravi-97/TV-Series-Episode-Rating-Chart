@@ -14,7 +14,7 @@ function App() {
             <Switch>
               <Route exact path="/chart">
                 <div>
-                  <LineChart/>
+                  <LineChart />
                 </div>
               </Route>
               <Route exact path="/find">
@@ -22,7 +22,7 @@ function App() {
               </Route>
             </Switch>
           </div>
-          <UpArrow/>
+          <UpArrow />
         </div>
       </Router>
     </div>

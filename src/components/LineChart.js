@@ -74,7 +74,7 @@ function LineChart() {
                 setChartInstance(null); // Clear previous chart instance reference
                 setChartData(transformedData);
                 setIsPending(false);
-                window.location.href = '#my-chart'; 
+                window.location.href = '#my-chart';
             })
             .catch((error) => {
                 console.error(error);
