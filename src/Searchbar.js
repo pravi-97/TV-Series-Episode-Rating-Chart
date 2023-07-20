@@ -22,7 +22,7 @@ const SearchBar = () => {
             <div className="container text-center">
                 <div className="row">
                     <div className="col-md-12">
-                        <div id="search-heading">Enter IMdb ID or Search for a Series</div>
+                        <div id="search-heading">Enter the name of the Series</div>
                         <form onSubmit={handleSubmit} method="post">
                             <div id="search-bar" className="align-top">
                                 <span className="btn-search" id="btn-search" type="button">
