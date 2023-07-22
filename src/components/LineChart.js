@@ -7,20 +7,20 @@ function LineChart() {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
     const value = params.get("value");
+    const api = params.get("api");
 
     const [chartData, setChartData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [chartInstance, setChartInstance] = useState(null);
 
     useEffect(() => {
-        const lambda = "https://7t7dzo20f2.execute-api.us-east-1.amazonaws.com/test/?param1=";
+        const lambda = `https://7t7dzo20f2.execute-api.us-east-1.amazonaws.com/test/?param1=`;
 
         if (chartInstance) {
-            // Destroy previous chart instance
             chartInstance.destroy();
         }
 
-        fetch(`${lambda}rating&param2=` + value)
+        fetch(`${lambda}${api}&param2=` + value)
             .then((response) => response.json())
             .then((data) => {
                 const ratingArray = data.ratingArray;
@@ -28,7 +28,6 @@ function LineChart() {
                 const overViewArray = data.overViewArray;
                 let ttValue = '';
 
-                // Transform data into the format expected by Line component
                 const transformedData = {
                     labels: nameArray,
                     datasets: [
@@ -51,19 +50,17 @@ function LineChart() {
                                 callbacks: {
                                     label: function (tooltipItem) {
                                         const dataIndex = tooltipItem.dataIndex;
-                                        const label = overViewArray[dataIndex]; // Assuming you have an 'overViewArray' containing tooltip labels
+                                        const label = overViewArray[dataIndex];
                                         ttValue = tooltipItem.parsed.y;
                                         return label;
                                     },
                                     afterBody: function (tooltipItems) {
-                                        // Add your footer text here
                                         const rText = "Rating: " + ttValue;
                                         return rText;
                                     },
                                 },
-                                // Tooltip styling options
-                                display: true, // Enable tooltip display
-                                cornerRadius: 20, // Customize tooltip corner radius
+                                display: true,
+                                cornerRadius: 20,
                                 boxHeight: 0,
                                 boxWidth: 0,
                             },
@@ -86,7 +83,7 @@ function LineChart() {
                 chartInstance.destroy();
             }
         };
-    }, [value]);
+    }, [api, value]);
 
     if (isPending) {
         return <p>Loading...</p>;

@@ -11,7 +11,11 @@ html {
 
 body {
     background-color: lavender;
-}
+    /* background-image: linear-gradient(to right bottom, #ffffff, #fbfafe, #f6f5fd, #f2f1fc, #edecfb, #efe7ff, #f5e0ff, #ffd9ff, #ffcbeb, #ffc5b0, #ffda61, #ffff00);
+    background-repeat: no-repeat;
+    background-position: 0;
+background-attachment: fixed; */
+ }
 
 .card-main {
     width: 320px;
@@ -138,8 +142,13 @@ body {
     color: #ffffff;
 }
 
+.radios {
+    /* padding-top: 60px;  */
+    padding-bottom: 20px;
+}
+
 #search-section {
-    margin-bottom: 100px;
+    margin-bottom: 70px;
 }
 
 #up-arrow-container {
