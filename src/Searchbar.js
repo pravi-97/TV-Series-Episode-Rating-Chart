@@ -7,13 +7,7 @@ const SearchBar = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const regex = /^tt\d+$/;
-        title = (title.trim()).toString();
-        if (regex.test(title)) {
-            history.push(`/chart?value=${encodeURIComponent(title)}`)
-        } else {
-            history.push(`/find?value=${encodeURIComponent(title)}`)
-        }
+        history.push(`/find?value=${encodeURIComponent(title)}`)
     }
 
     return (

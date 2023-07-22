@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import myImg from './images/No-Image-Placeholder.png';
+
 const FindSeries = () => {
     const location = useLocation();
     const params = new URLSearchParams(location.search);
@@ -9,7 +10,7 @@ const FindSeries = () => {
 
     const [sArr, setSArr] = useState([]);
     const [isPending, setIsPending] = useState(true);
-
+    const [selectedRadio, setSelectedRadio] = useState('tmdb');
 
     useEffect(() => {
         const lambda = 'https://7t7dzo20f2.execute-api.us-east-1.amazonaws.com/test/?param1=search&param2='
@@ -19,25 +20,57 @@ const FindSeries = () => {
             .then(data => {
                 setSArr(data);
                 setIsPending(false);
-
+                window.location.href = '#card-list-section';
             })
             .catch(error => {
                 console.log(error);
                 setIsPending(false);
             });
-
     }, [value]);
 
+    const handleRadioChange = (e) => {
+        setSelectedRadio(e.target.value); 
+    };
     return (
         <section id="card-list-section">
-            <div className="container">
+            <div className="container text-center">
+                <div className="radios" id="radios">
+                    <div className="form-check form-check-inline">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="inlineRadio2"
+                            value="tmdb"
+                            checked={selectedRadio === 'tmdb'} 
+                            onChange={handleRadioChange} 
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio2">
+                            TMDB
+                        </label>
+                    </div>
+                    <div className="form-check form-check-inline">
+                        <input
+                            className="form-check-input"
+                            type="radio"
+                            name="inlineRadioOptions"
+                            id="inlineRadio1"
+                            value="imdb"
+                            checked={selectedRadio === 'imdb'} // Check if the current radio button is selected
+                            onChange={handleRadioChange} // Add onChange event handler
+                        />
+                        <label className="form-check-label" htmlFor="inlineRadio1">
+                            IMDB
+                        </label>
+                    </div>
+                </div>
                 <div className="row" id="the-card-list">
                     {isPending ? (
                         <p>Loading...</p>
                     ) : (
                         sArr.map((element) => (
                             <div className="col-md-4 col-sm-12" key={element.id}>
-                                <Link to={"/chart?value=" + element.id}>
+                                <Link to={"/chart?value=" + element.id + "&api=" + selectedRadio}>
                                     <div className="mb-5 center-content">
                                         <div className="card card-main">
                                             {element.poster_path === null ? (<img src={myImg} className="card-img-top rounded" alt={`${element.original_name} Poster Unavailable`} />) :
