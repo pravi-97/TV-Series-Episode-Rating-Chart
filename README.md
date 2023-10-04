@@ -10,4 +10,4 @@ it lets you see episode wise rating of your favourite TV Series. So you can unde
 [Tuhin imdb-api](https://github.com/tuhinpal/imdb-api)
 
 ## App URL
-Check out the app and let me knowWhat you think! [Episode Rating Chart](https://project.praveeshp.com/)
+Check out the app and let me knowWhat you think! [Episode Rating Chart](https://tvrating.praveeshp.com/)
