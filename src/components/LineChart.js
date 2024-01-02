@@ -12,7 +12,7 @@ function LineChart() {
     const [chartData, setChartData] = useState(null);
     const [isPending, setIsPending] = useState(true);
     const [chartInstance, setChartInstance] = useState(null);
-
+    const [isError, setIsError] = useState(false);
     useEffect(() => {
         const lambda = `https://yiebcdl91b.execute-api.ap-south-1.amazonaws.com/prod/?param1=`;
 
@@ -26,8 +26,10 @@ function LineChart() {
                 const ratingArray = data.ratingArray;
                 const nameArray = data.nameArray;
                 const overViewArray = data.overViewArray;
+                if (ratingArray === undefined || nameArray === undefined || overViewArray === undefined){
+                    setIsError(true);
+                }
                 let ttValue = '';
-
                 const transformedData = {
                     labels: nameArray,
                     datasets: [
@@ -74,6 +76,7 @@ function LineChart() {
                 window.location.href = '#my-chart';
             })
             .catch((error) => {
+                setIsPending(false);
                 console.error(error);
             });
 
@@ -88,7 +91,9 @@ function LineChart() {
     if (isPending) {
         return <p>Loading...</p>;
     }
-
+    else if (isError){
+        return <p>Error</p>;
+    }
     return chartData ? <Line id="my-chart" data={chartData} options={chartData.options} /> : null;
 }
 

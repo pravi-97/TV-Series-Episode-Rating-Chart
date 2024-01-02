@@ -40,27 +40,28 @@ const FindSeries = () => {
                             className="form-check-input"
                             type="radio"
                             name="inlineRadioOptions"
-                            id="inlineRadio2"
+                            id="tmdbRadio"
                             value="tmdb"
                             checked={selectedRadio === 'tmdb'} 
                             onChange={handleRadioChange} 
                         />
-                        <label className="form-check-label" htmlFor="inlineRadio2">
+                        <label className="form-check-label" htmlFor="tmdbRadio">
                             TMDB
                         </label>
                     </div>
-                    <div className="form-check form-check-inline">
+                    <div className="form-check form-check-inline" title="IMDb API is not available yet!">
                         <input
                             className="form-check-input"
                             type="radio"
                             name="inlineRadioOptions"
-                            id="inlineRadio1"
+                            id="imdbRadio"
                             value="imdb"
-                            checked={selectedRadio === 'imdb'} // Check if the current radio button is selected
-                            onChange={handleRadioChange} // Add onChange event handler
+                            checked={selectedRadio === 'imdb'} 
+                            onChange={handleRadioChange}
+                            disabled
                         />
-                        <label className="form-check-label" htmlFor="inlineRadio1">
-                            IMDB
+                        <label className="form-check-label" htmlFor="imdbRadio">
+                            IMDb
                         </label>
                     </div>
                 </div>
