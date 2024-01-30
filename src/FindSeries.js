@@ -13,7 +13,7 @@ const FindSeries = () => {
     const [selectedRadio, setSelectedRadio] = useState('tmdb');
 
     useEffect(() => {
-        const lambda = 'https://yiebcdl91b.execute-api.ap-south-1.amazonaws.com/prod/?param1=search&param2='
+        const lambda = 'https://evnybizsck.execute-api.ap-south-1.amazonaws.com/prod?param1=search&param2='
 
         fetch(lambda + value)
             .then(response => response.json())

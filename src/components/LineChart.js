@@ -14,7 +14,7 @@ function LineChart() {
     const [chartInstance, setChartInstance] = useState(null);
     const [isError, setIsError] = useState(false);
     useEffect(() => {
-        const lambda = `https://yiebcdl91b.execute-api.ap-south-1.amazonaws.com/prod/?param1=`;
+        const lambda = `https://evnybizsck.execute-api.ap-south-1.amazonaws.com/prod?param1=`;
 
         if (chartInstance) {
             chartInstance.destroy();
