@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useNavigate , Link} from 'react-router-dom';
 
 const SearchBar = () => {
     let [title, setTitle] = useState('');
-    const history = useHistory();
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        history.push(`/find?value=${encodeURIComponent(title)}`)
+        navigate(`/find?value=${encodeURIComponent(title)}`);
     }
 
     return (
         <section id="search-section">
+            {/* <span style={{fontWeight: "bolder", fontSize: "24px"}}>HOME</span> */}
+            <Link to={"/"} style={{fontWeight: "bolder", fontSize: "24px", color: "black", textDecoration: "none"}}>HOME</Link>
             <br />
             <div className="container text-center">
                 <div className="row">

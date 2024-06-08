@@ -1,12 +1,8 @@
-# Welcome the Episode Rating Chart!
+# React + Vite
 
-## What does it do?
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-it lets you see episode wise rating of your favourite TV Series. So you can understand at what point they started to go down 
+Currently, two official plugins are available:
 
-## API Used in the project
-
-[TMDB API](https://www.themoviedb.org/)
-
-## App URL
-Check out the app and let me knowWhat you think! [Episode Rating Chart](https://rating.praveeshp.com/)
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh

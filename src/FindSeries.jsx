@@ -70,7 +70,7 @@ const FindSeries = () => {
                         <p>Loading...</p>
                     ) : (
                         sArr.map((element) => (
-                            <div className="col-md-4 col-sm-12" key={element.id}>
+                            <div className="col-md-3 col-sm-6" key={element.id}>
                                 <Link to={"/chart?value=" + element.id + "&api=" + selectedRadio}>
                                     <div className="mb-5 center-content">
                                         <div className="card card-main">
