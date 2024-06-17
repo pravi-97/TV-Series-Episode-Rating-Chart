@@ -12,7 +12,6 @@ const SearchBar = () => {
 
     return (
         <section id="search-section">
-            {/* <span style={{fontWeight: "bolder", fontSize: "24px"}}>HOME</span> */}
             <Link to={"/"} style={{fontWeight: "bolder", fontSize: "24px", color: "black", textDecoration: "none"}}>HOME</Link>
             <br />
             <div className="container text-center">

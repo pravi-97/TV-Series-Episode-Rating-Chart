@@ -2,7 +2,6 @@
 
 * {
   font-family: "Playfair Display", serif;
-  /* font-size: 24px; */
 }
 
 html {
@@ -76,8 +75,6 @@ background-attachment: fixed; */
 
 .card-main:hover img {
   filter: brightness(0.3);
-  /* filter: blur(3px); */
-  /* box-shadow: 0 0 20px 5px yellow; */
 }
 
 #search-heading {
@@ -144,7 +141,6 @@ background-attachment: fixed; */
 }
 
 .radios {
-  /* padding-top: 60px;  */
   padding-bottom: 20px;
 }
 
@@ -172,15 +168,7 @@ background-attachment: fixed; */
 
 #top-arrow {
   transition: fill 0.3s;
-  /* transition: 0.3s; */
   font-size: 35px;
   color: #ffffff;
   --fa-bounce-height: -10px;
 }
-
-canvas {
-  padding: 0px 50px 0px 50px;
-}
-/* #go-to-top:hover #top-arrow {
-    transform: translateY(-5px);
-} */
